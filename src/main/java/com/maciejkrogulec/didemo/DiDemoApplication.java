@@ -1,6 +1,9 @@
 package com.maciejkrogulec.didemo;
 
+import com.maciejkrogulec.didemo.controllers.ConstructorInjectedController;
 import com.maciejkrogulec.didemo.controllers.MyController;
+import com.maciejkrogulec.didemo.controllers.PropertyInjectedController;
+import com.maciejkrogulec.didemo.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,5 +18,9 @@ public class DiDemoApplication {
         MyController controller = (MyController) ctx.getBean("myController");
 
         controller.hello();
+
+        System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
+        System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
+        System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
     }
 }
